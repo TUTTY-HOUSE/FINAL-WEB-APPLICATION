@@ -1,0 +1,259 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #000;
+}
+
+/* Color variable */
+:root {
+    --goal2: #DDA63A;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    width: 100%;
+}
+
+/* ===========================
+   HEADER (With Scroll Effect)
+============================ */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 25px 0;
+    z-index: 1000;
+    transition: 0.3s ease;
+    background: transparent;
+}
+
+header.scrolled {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding-bottom: 5px;
+    position: relative;
+    white-space: nowrap;
+}
+
+/* underline animation */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--goal2);
+    transition: 0.3s;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+/* ===========================
+   HAMBURGER
+=========================== */
+.hamburger {
+    display: none;
+    width: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: white;
+    transition: 0.3s;
+}
+
+/* Active hamburger */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile nav hidden */
+#nav-menu {
+    transition: 0.3s;
+}
+
+#nav-menu.open {
+    right: 0;
+}
+
+/* ===========================
+   HERO + ANIMATION
+=========================== */
+.hero {
+    width: 100%;
+    height: 100vh;
+    background: url("https://i.pinimg.com/1200x/eb/a9/53/eba9537b1a229f721c61bf6ad3aef404.jpg") center/cover no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fade-in {
+    animation: fadeIn 1.4s ease;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.content {
+    position: relative;
+    color: white;
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    z-index: 2;
+}
+
+.content h1 {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 40px;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 35px;
+    border: 2px solid var(--goal2);
+    border-radius: 25px;
+    background: var(--goal2);
+    color: black;
+    font-size: 15px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--goal2);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+/* Tablet */
+@media (max-width: 800px) {
+    nav { display: none; }
+
+    .hamburger {
+        display: flex;
+    }
+
+    #nav-menu {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        background: rgba(0,0,0,0.9);
+        width: 60%;
+        height: 100vh;
+        flex-direction: column;
+        padding: 30px;
+        gap: 25px;
+        display: flex;
+    }
+
+    #nav-menu a {
+        font-size: 18px;
+    }
+
+    .content h1 {
+        font-size: 42px;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    #nav-menu {
+        width: 100%;
+    }
+
+    .content h1 {
+        font-size: 32px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        font-size: 14px;
+    }
+}
