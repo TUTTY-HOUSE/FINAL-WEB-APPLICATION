@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zero Hunger - Problems</title>
+    <link rel="stylesheet" href="intro.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee+Spice&family=Goblin+One&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Miniver&family=Momo+Trust+Display&family=Noto+Sans+KR:wght@100&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Display:ital@0;1&family=Rubik+80s+Fade&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        #map { height: 400px; margin-top: 20px; }
+        .todo-list { margin-top: 30px; }
+        .todo-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .todo-item button { background-color: red; color: white; border: none; border-radius: 3px; padding: 2px 6px; }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="yourpage.html" target="_blank" class="logo">
+                Sustainable Food for Everyday Life
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="intro.html">Introduction</a>
+                <a href="problem.html" class="active">Problems</a>
+                <a href="#">Objectives</a>
+                <a href="#">Program</a>
+            </nav>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search content..." />
+            </div>
+        </div>
+    </header>
+
+    <!-- Problems Section -->
+    <section class="problem-section">
+        <div class="container my-5">
+            <h1 class="text-center mb-4">Problems Related to Zero Hunger</h1>
+
+            <div class="row g-4">
+                <!-- Example Problem Cards -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="hunger.jpg" class="card-img-top" alt="Chronic Hunger">
+                        <div class="card-body">
+                            <h3 class="card-title">Chronic Hunger</h3>
+                            <p>9% of the world's population is chronically undernourished.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="food_waste.jpg" class="card-img-top" alt="Food Waste">
+                        <div class="card-body">
+                            <h3 class="card-title">Food Loss and Waste</h3>
+                            <p>Over 30% of global food is lost or wasted, affecting people and the environment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100">
+                        <img src="small_farmers.jpg" class="card-img-top" alt="Small-Scale Farmers">
+                        <div class="card-body">
+                            <h3 class="card-title">Challenges for Small Farmers</h3>
+                            <p>Small-scale farmers produce 70% of the world’s food but face limited resources.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics-section bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Global Hunger Statistics</h2>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="fas fa-users fa-3x mb-2"></i>
+                    <h3>9%</h3>
+                    <p>of the world's population is chronically undernourished</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-box-open fa-3x mb-2"></i>
+                    <h3>30%</h3>
+                    <p>of food produced globally is lost or wasted</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-seedling fa-3x mb-2"></i>
+                    <h3>70%</h3>
+                    <p>of food is produced by small-scale farmers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- To-Do List Section -->
+    <section class="todo-list container my-5">
+        <h2>Actions You Can Take</h2>
+        <div class="mb-3">
+            <input type="text" id="todoInput" class="form-control" placeholder="Add a new action..." />
+            <button id="addTodoBtn" class="btn btn-primary mt-2">Add</button>
+        </div>
+        <ul id="todoItems" class="list-group"></ul>
+    </section>
+
+    <!-- Leaflet Map Section -->
+    <section class="container my-5">
+        <h2 class="mb-4 text-center">Hunger Hotspots Map</h2>
+        <div id="map"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Sustainable Food for Every Life</h3>
+                    <p>Promoting nutrition, ending hunger, and supporting sustainable agriculture.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/homepage/index.html">Home</a></li>
+                        <li><a href="intro.html">Introduction</a></li>
+                        <li><a href="problem.html">Problems</a></li>
+                        <li><a href="#">Objectives</a></li>
+                        <li><a href="#">Program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@sustainablefood.org</p>
+                    <p>Phone: +63 912 345 6789</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2025 Sustainable Food Initiative. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Leaflet Map
+        const map = L.map('map').setView([0, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Example hunger hotspot markers
+        const hotspots = [
+            { coords: [10.0, 20.0], name: "Region A - High Hunger" },
+            { coords: [-5.0, 30.0], name: "Region B - Severe Food Insecurity" },
+            { coords: [15.0, 35.0], name: "Region C - Chronic Hunger" }
+        ];
+
+        hotspots.forEach(h => {
+            L.marker(h.coords).addTo(map).bindPopup(h.name);
+        });
+
+        // To-Do List
+        const todoInput = document.getElementById('todoInput');
+        const addTodoBtn = document.getElementById('addTodoBtn');
+        const todoItems = document.getElementById('todoItems');
+
+        addTodoBtn.addEventListener('click', () => {
+            const value = todoInput.value.trim();
+            if (!value) return;
+
+            const li = document.createElement('li');
+            li.className = 'list-group-item todo-item';
+            li.innerHTML = `${value} <button onclick="this.parentElement.remove()">X</button>`;
+            todoItems.appendChild(li);
+            todoInput.value = '';
+        });
+    </script>
+</body>
+</html>
